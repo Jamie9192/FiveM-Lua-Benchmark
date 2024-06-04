@@ -1,6 +1,19 @@
 local iterations = 10000
 local how_many_times_for_average = 10
 
+local selectedTest = "Insert"
+
+-- Feel free to add your own tests to the example tests and reference them above
+
+--[[
+
+  [key:string] = {
+    name: string,
+    func: function
+  }[]
+
+]]
+
 local exampleTests = {
 
   ["Hash"] = {
@@ -83,6 +96,9 @@ local exampleTests = {
 
 ----------------------------------
 -- DO NOT TOUCH BELOW THIS LINE --
+----------------------------------
+-- unless you have improvements --
+--    and willing to do a PR    --
 ----------------------------------
 
 local results = {}
@@ -171,11 +187,11 @@ local test = setmetatable({
   tests = {},
 }, benchmarkF)
 
-local selectedTest = "Insert"
 if not exampleTests[selectedTest] then
   print("Test not found")
   return
 end
+
 for i = 1, #exampleTests[selectedTest] do
   test:add(exampleTests[selectedTest][i])
 end
